@@ -8,16 +8,18 @@ public class Point {
     this.x = x;
     this.y = y;
   }
-
-
-  public void distance(Point p2) {
+  public double distance(Point p2) {
     System.out.println("Точка 1: " + this.x + ";" + this.y);
     System.out.println("Точка 2: " + p2.x + ";" + p2.y);
     System.out.printf("Расстояние между точками = %s%n", Math.sqrt((this.x - p2.x) * (this.x - p2.x) + (this.y - p2.y) * (this.y - p2.y)));
 
-
+    return Math.sqrt((this.x - p2.x) * (this.x - p2.x) + (this.y - p2.y) * (this.y - p2.y));
+  }
+  public double outDistances(Point p2) {
+    return Math.sqrt((this.x - p2.x) * (this.x - p2.x) + (this.y - p2.y) * (this.y - p2.y));
+  }
   }
 
-}
+
 
 
