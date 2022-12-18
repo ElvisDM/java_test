@@ -21,15 +21,15 @@ public class ContactsCreationTests {
 
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
-    login();
+    login("admin", "secret");
   }
 
-  private void login() {
+  private void login(String usename, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys("admin");
+    wd.findElement(By.name("user")).sendKeys(usename);
     wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys("secret");
+    wd.findElement(By.name("pass")).sendKeys(password);
     wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
@@ -38,7 +38,7 @@ public class ContactsCreationTests {
 
 
     gotoAddNewContactPage();
-    fillContactForm();
+    fillContactForm("Viktor", "Brovin", "+7(901)683-09-76", "brovin19@mail.ru");
     saveContact();
     gotoHomePage();
 
@@ -52,19 +52,19 @@ public class ContactsCreationTests {
     wd.findElement(By.xpath("//input[21]")).click();
   }
 
-  private void fillContactForm() {
+  private void fillContactForm(String firstname, String lastname, String homephone, String mail) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("Viktor");
+    wd.findElement(By.name("firstname")).sendKeys(firstname);
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys("Brovin");
+    wd.findElement(By.name("lastname")).sendKeys(lastname);
     wd.findElement(By.name("home")).click();
     wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys("+7(901)683-09-76");
+    wd.findElement(By.name("home")).sendKeys(homephone);
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys("brovin19@mail.ru");
+    wd.findElement(By.name("email")).sendKeys(mail);
   }
 
   private void gotoAddNewContactPage() {
