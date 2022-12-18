@@ -21,6 +21,10 @@ public class ContactsCreationTests {
 
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
+    login();
+  }
+
+  private void login() {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
@@ -32,7 +36,23 @@ public class ContactsCreationTests {
   @Test
   public void testContactsCreation() throws Exception {
 
-    wd.findElement(By.linkText("add new")).click();
+
+    gotoAddNewContactPage();
+    fillContactForm();
+    saveContact();
+    gotoHomePage();
+
+  }
+
+  private void gotoHomePage() {
+    wd.findElement(By.linkText("home page")).click();
+  }
+
+  private void saveContact() {
+    wd.findElement(By.xpath("//input[21]")).click();
+  }
+
+  private void fillContactForm() {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
     wd.findElement(By.name("firstname")).sendKeys("Viktor");
@@ -45,9 +65,10 @@ public class ContactsCreationTests {
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
     wd.findElement(By.name("email")).sendKeys("brovin19@mail.ru");
-    wd.findElement(By.xpath("//input[21]")).click();
-    wd.findElement(By.linkText("home page")).click();
-    wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void gotoAddNewContactPage() {
+    wd.findElement(By.linkText("add new")).click();
   }
 
   @AfterMethod(alwaysRun = true)
