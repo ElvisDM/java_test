@@ -1,9 +1,6 @@
 package ru.stqa.test.addressbook;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
   protected WebDriver wd;
+  protected boolean acceptNextAlert = true;
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
@@ -117,5 +115,28 @@ public class TestBase {
 
   protected void gotoHomePage() {
     wd.findElement(By.linkText("home page")).click();
+  }
+
+  protected String closeAlertAndGetItsText() {
+    try {
+      Alert alert = wd.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
+  }
+
+  protected void deleteSelectedContacts() {
+    wd.findElement(By.xpath("//input[@value='Delete']")).click();
+  }
+
+  protected void selectContacts() {
+    wd.findElement(By.name("selected[]")).click();
   }
 }
