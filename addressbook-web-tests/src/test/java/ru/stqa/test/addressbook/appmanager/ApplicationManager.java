@@ -3,12 +3,12 @@ package ru.stqa.test.addressbook.appmanager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.stqa.test.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
   public WebDriver wd;
+  private ContactHelper contactHelper;
   private GroupHelper groupHelper;
   public boolean acceptNextAlert = true;
 
@@ -17,6 +17,7 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
+    contactHelper = new ContactHelper(wd);
     login("admin", "secret");
   }
 
@@ -61,25 +62,6 @@ public class ApplicationManager {
     wd.findElement(By.linkText("add new")).click();
   }
 
-  public void fillContactForm(ContactData contactData) {
-    wd.findElement(By.name("firstname")).click();
-    wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(contactData.firstname());
-    wd.findElement(By.name("lastname")).click();
-    wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(contactData.lastname());
-    wd.findElement(By.name("home")).click();
-    wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys(contactData.homephone());
-    wd.findElement(By.name("email")).click();
-    wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(contactData.mail());
-  }
-
-  public void saveContact() {
-    wd.findElement(By.xpath("//input[21]")).click();
-  }
-
   public void gotoHomePage() {
     wd.findElement(By.linkText("home page")).click();
   }
@@ -109,5 +91,9 @@ public class ApplicationManager {
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
