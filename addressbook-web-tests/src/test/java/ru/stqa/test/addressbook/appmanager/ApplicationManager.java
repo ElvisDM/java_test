@@ -3,45 +3,44 @@ package ru.stqa.test.addressbook.appmanager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import ru.stqa.test.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
-  public WebDriver wd;
+  private final ContactHelper contactHelper = new ContactHelper();
   private GroupHelper groupHelper;
   public boolean acceptNextAlert = true;
 
   public void init() {
-    wd = new FirefoxDriver(new FirefoxOptions().setBinary("c:\\Program Files\\Mozilla Firefox\\firefox.exe"));
-    wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-    wd.get("http://localhost/addressbook/");
-    groupHelper = new GroupHelper(wd);
+    contactHelper.wd = new FirefoxDriver(new FirefoxOptions().setBinary("c:\\Program Files\\Mozilla Firefox\\firefox.exe"));
+    contactHelper.wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    contactHelper.wd.get("http://localhost/addressbook/");
+    groupHelper = new GroupHelper(contactHelper.wd);
     login("admin", "secret");
   }
 
   private void login(String username, String password) {
 
-    wd.findElement(By.name("user")).clear();
-    wd.findElement(By.name("user")).sendKeys(username);
-    wd.findElement(By.name("pass")).click();
-    wd.findElement(By.name("pass")).clear();
-    wd.findElement(By.name("pass")).sendKeys(password);
-    wd.findElement(By.xpath("//input[@value='Login']")).click();
+    contactHelper.wd.findElement(By.name("user")).clear();
+    contactHelper.wd.findElement(By.name("user")).sendKeys(username);
+    contactHelper.wd.findElement(By.name("pass")).click();
+    contactHelper.wd.findElement(By.name("pass")).clear();
+    contactHelper.wd.findElement(By.name("pass")).sendKeys(password);
+    contactHelper.wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   public void gotoGroupPage() {
-    wd.findElement(By.name("searchform")).click();
-    wd.findElement(By.linkText("groups")).click();
+    contactHelper.wd.findElement(By.name("searchform")).click();
+    contactHelper.wd.findElement(By.linkText("groups")).click();
   }
 
   public void stop() {
-    wd.quit();
+    contactHelper.wd.quit();
   }
 
   private boolean isElementPresent(By by) {
     try {
-      wd.findElement(by);
+      contactHelper.wd.findElement(by);
       return true;
     } catch (NoSuchElementException e) {
       return false;
@@ -50,7 +49,7 @@ public class ApplicationManager {
 
   private boolean isAlertPresent() {
     try {
-      wd.switchTo().alert();
+      contactHelper.wd.switchTo().alert();
       return true;
     } catch (NoAlertPresentException e) {
       return false;
@@ -58,35 +57,12 @@ public class ApplicationManager {
   }
 
   public void gotoAddNewContactPage() {
-    wd.findElement(By.linkText("add new")).click();
-  }
-
-  public void fillContactForm(ContactData contactData) {
-    wd.findElement(By.name("firstname")).click();
-    wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys(contactData.firstname());
-    wd.findElement(By.name("lastname")).click();
-    wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys(contactData.lastname());
-    wd.findElement(By.name("home")).click();
-    wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys(contactData.homephone());
-    wd.findElement(By.name("email")).click();
-    wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys(contactData.mail());
-  }
-
-  public void saveContact() {
-    wd.findElement(By.xpath("//input[21]")).click();
-  }
-
-  public void gotoHomePage() {
-    wd.findElement(By.linkText("home page")).click();
+    contactHelper.wd.findElement(By.linkText("add new")).click();
   }
 
   public String closeAlertAndGetItsText() {
     try {
-      Alert alert = wd.switchTo().alert();
+      Alert alert = contactHelper.wd.switchTo().alert();
       String alertText = alert.getText();
       if (acceptNextAlert) {
         alert.accept();
@@ -100,14 +76,18 @@ public class ApplicationManager {
   }
 
   public void deleteSelectedContacts() {
-    wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    contactHelper.wd.findElement(By.xpath("//input[@value='Delete']")).click();
   }
 
   public void selectContacts() {
-    wd.findElement(By.name("selected[]")).click();
+    contactHelper.wd.findElement(By.name("selected[]")).click();
   }
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
+  }
+
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
