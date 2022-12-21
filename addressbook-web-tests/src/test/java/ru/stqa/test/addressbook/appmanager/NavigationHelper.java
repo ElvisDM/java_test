@@ -3,15 +3,15 @@ package ru.stqa.test.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class NavigationHelper {
-  private WebDriver wd;
+public class NavigationHelper extends HelperBase {
 
   public NavigationHelper(WebDriver wd) {
-    this.wd = wd;
+
+    super(wd);
   }
 
   public void gotoGroupPage() {
-    wd.findElement(By.name("searchform")).click();
-    wd.findElement(By.linkText("groups")).click();
+    click(By.name("searchform"));
+    click(By.linkText("groups"));
   }
 }
