@@ -39,15 +39,6 @@ public class ApplicationManager {
     }
   }
 
-  private boolean isAlertPresent() {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
   public void gotoAddNewContactPage() {
     wd.findElement(By.linkText("add new")).click();
   }
