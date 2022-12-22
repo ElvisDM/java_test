@@ -29,4 +29,12 @@ public class ContactHelper extends HelperBase {
   public void gotoAddNewContactPage() {
     wd.findElement(By.linkText("add new")).click();
   }
+
+  public void initContactsModification() {
+    click(By.xpath("//img[@alt='Edit']"));
+  }
+
+  public void updateContacts() {
+    click(By.name("update"));
+  }
 }
