@@ -10,10 +10,11 @@ public class ContactsDeletionTests extends TestBase {
   @Test
   public void testContactsDeletion () throws Exception {
 
-    app.selectContacts();
+    app.getContactHelper().selectContacts();
     app.acceptNextAlert = true;
-    app.deleteSelectedContacts();
+    app.getContactHelper().deleteSelectedContacts();
     assertTrue(app.closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+
 
   }
 

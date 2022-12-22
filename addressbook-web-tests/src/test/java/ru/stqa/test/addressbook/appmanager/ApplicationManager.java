@@ -30,22 +30,6 @@ public class ApplicationManager {
     wd.quit();
   }
 
-  private boolean isElementPresent(By by) {
-    try {
-      wd.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  public void gotoAddNewContactPage() {
-    wd.findElement(By.linkText("add new")).click();
-  }
-
-  public void gotoHomePage() {
-    wd.findElement(By.linkText("home page")).click();
-  }
 
   public String closeAlertAndGetItsText() {
     try {
@@ -62,13 +46,6 @@ public class ApplicationManager {
     }
   }
 
-  public void deleteSelectedContacts() {
-    wd.findElement(By.xpath("//input[@value='Delete']")).click();
-  }
-
-  public void selectContacts() {
-    wd.findElement(By.name("selected[]")).click();
-  }
 
   public GroupHelper getGroupHelper() {
     return groupHelper;
@@ -80,5 +57,18 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  public NavigationHelper gotoHomePage() {
+    return navigationHelper;
+  }
+  public ContactHelper selectContacts(){
+    return contactHelper;
+  }
+  public ContactHelper deleteSelectedContacts(){
+    return contactHelper;
+  }
+  public ContactHelper gotoAddNewContactPage(){
+    return contactHelper;
   }
 }
