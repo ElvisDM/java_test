@@ -6,7 +6,7 @@ public class ContactsDeletionTests extends TestBase {
 
 
   @Test
-  public void testContactsDeletion () throws Exception {
+  public void testContactsDeletion () {
 
     app.getContactHelper().selectContacts();
     app.acceptNextAlert = true;
