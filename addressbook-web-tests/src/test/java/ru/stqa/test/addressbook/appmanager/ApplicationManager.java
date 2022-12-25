@@ -23,11 +23,11 @@ public class ApplicationManager {
     this.browser = browser;
   }
   public void init() {
-    if (browser == BrowserType.FIREFOX) {
+    if (browser.equals(BrowserType.FIREFOX)) {
       wd = new FirefoxDriver(new FirefoxOptions().setBinary("c:\\Program Files\\Mozilla Firefox\\firefox.exe"));
-    } else if(browser == BrowserType.CHROME) {
+    } else if(browser.equals(BrowserType.CHROME)) {
       wd = new ChromeDriver(new ChromeOptions().setBinary("C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"));
-    } else if (browser == BrowserType.IEXPLORE) {
+    } else if (browser.equals(BrowserType.IEXPLORE)) {
       wd = new InternetExplorerDriver();
     }
 
