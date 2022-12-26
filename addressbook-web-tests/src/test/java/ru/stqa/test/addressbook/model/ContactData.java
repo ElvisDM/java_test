@@ -5,13 +5,15 @@ import java.util.Objects;
 public final class ContactData {
   private final String firstname;
   private final String lastname;
+  private String address;
   private final String homephone;
   private final String mail;
   private String group;
 
-  public ContactData(String firstname, String lastname, String homephone, String mail, String group) {
+  public ContactData(String firstname, String lastname, String address, String homephone, String mail, String group) {
     this.firstname = firstname;
     this.lastname = lastname;
+    this.address = address;
     this.homephone = homephone;
     this.mail = mail;
     this.group = group;
@@ -23,6 +25,9 @@ public final class ContactData {
 
   public String lastname() {
     return lastname;
+  }
+  public String address() {
+    return address;
   }
 
   public String homephone() {
@@ -61,4 +66,5 @@ public final class ContactData {
   public String getGroup() {
     return group;
   }
+
 }
