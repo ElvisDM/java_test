@@ -27,6 +27,7 @@ public class NavigationHelper extends HelperBase {
   }
 
   public void gotoHome() {
+    if (! isElementPresent(By.linkText("group page")) && ! isElementPresent(By.linkText("home page")))
     click(By.linkText("home"));
   }
 }
