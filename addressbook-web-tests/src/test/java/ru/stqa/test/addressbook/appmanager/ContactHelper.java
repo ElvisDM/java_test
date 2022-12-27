@@ -37,6 +37,7 @@ public class ContactHelper extends HelperBase {
   }
   public void gotoAddNewContactPage() {
     wd.findElement(By.linkText("add new")).click();
+    if (isElementPresent(By.name("new_group"))) {}
   }
 
   public void initContactsModification() {
@@ -53,10 +54,19 @@ public class ContactHelper extends HelperBase {
 
   public void createAndFillNewContactForm(ContactData contact) {
     gotoAddNewContactPage();
+    if (isElementPresent(By.name("new_group"))) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contact.getGroup());
+    }
+
+
     fillContactForm(new ContactData("Viktor", "Brovin", "Russia","+7(901)683-09-76", "brovin19@mail.ru", "test1"),true);
     saveContact();
   }
   public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public boolean isThereASelectGroup() {
     return isElementPresent(By.name("selected[]"));
   }
 }
