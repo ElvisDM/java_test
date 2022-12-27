@@ -74,8 +74,7 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public NavigationHelper gotoHomePage() {
-    return navigationHelper;
+  public void gotoHomePage() {
   }
 
 }
