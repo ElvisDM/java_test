@@ -10,12 +10,13 @@ public class ContactsDeletionTests extends TestBase {
   @Test
   public void testContactsDeletion () {
     app.getNavigationHelper().gotoGroupPage();
-    if (! app.getContactHelper().isThereAGroupName("test1")) {
-      app.getGroupHelper().createGroup(new GroupData("test1", "test2", "test3"));
+    String group = "test1";
+    if (! app.getContactHelper().isThereAGroupName(group)) {
+      app.getGroupHelper().createGroup(new GroupData(group, "test2", "test3"));
     }
     app.getNavigationHelper().gotoHome();
     if (! app.getContactHelper().isThereASelectContact()) {
-      app.getContactHelper().createAndFillNewContactForm(new ContactData("Viktor", "Brovin", "Russia","+7(901)683-09-76", "brovin19@mail.ru", "test1"));
+      app.getContactHelper().createAndFillNewContactForm(new ContactData("Viktor", "Brovin", "Russia","+7(901)683-09-76", "brovin19@mail.ru", group));
     }
     app.getNavigationHelper().gotoHomePage();
     app.getContactHelper().selectContacts();
