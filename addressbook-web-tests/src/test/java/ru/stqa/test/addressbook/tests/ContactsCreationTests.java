@@ -10,7 +10,7 @@ public class ContactsCreationTests extends TestBase {
   @Test
   public void testContactsCreation() {
     app.getNavigationHelper().gotoGroupPage();
-    if (! app.getContactHelper().isThereASelectGroup()) {
+    if (! app.getContactHelper().isThereAGroupName("test1")) {
       app.getGroupHelper().createGroup(new GroupData("test1", "test2", "test3"));
     }
     app.getContactHelper().createAndFillNewContactForm(new ContactData("Viktor", "Brovin", "Russia","+7(901)683-09-76", "brovin19@mail.ru", "test1"));
