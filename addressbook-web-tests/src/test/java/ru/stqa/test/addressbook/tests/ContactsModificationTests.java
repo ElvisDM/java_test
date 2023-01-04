@@ -10,7 +10,7 @@ public class ContactsModificationTests extends TestBase{
   public void testContactsModification() {
     app.getNavigationHelper().gotoGroupPage();
     String group = "test1";
-    if (! app.getContactHelper().isThereAGroupName(group)) {
+    if (! app.getContactHelper().isThereACheckGroupName(group)) {
       app.getGroupHelper().createGroup(new GroupData(group, "test2", "test3"));
     }
     app.getNavigationHelper().gotoHome();

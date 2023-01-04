@@ -11,7 +11,7 @@ public class ContactsDeletionTests extends TestBase {
   public void testContactsDeletion () {
     app.getNavigationHelper().gotoGroupPage();
     String group = "test1";
-    if (! app.getContactHelper().isThereAGroupName(group)) {
+    if (! app.getContactHelper().isThereACheckGroupName(group)) {
       app.getGroupHelper().createGroup(new GroupData(group, "test2", "test3"));
     }
     app.getNavigationHelper().gotoHome();

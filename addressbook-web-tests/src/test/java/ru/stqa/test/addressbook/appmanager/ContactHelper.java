@@ -61,7 +61,7 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public boolean isThereAGroupName(String groupname) {
+  public boolean isThereACheckGroupName(String groupname) {
     return isElementPresent(By.xpath("//span[@class='group'][text()='" + groupname + "']"));
   }
 }
