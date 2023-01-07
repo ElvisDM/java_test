@@ -11,12 +11,12 @@ import java.util.List;
 public class ContactsCreationTests extends TestBase {
 
 
-  @Test(enabled = false)
+  @Test
   public void testContactsCreation() {
     app.goTo().groupPage();
     String group = "test1";
     if (! app.getContactHelper().isThereACheckGroupName(group)) {
-      app.group().create(new GroupData(group, "test2", "test3"));
+      app.group().create(new GroupData().withName(group).withHeader("test2").withFooter("test3"));
     }
     app.goTo().gotoHome();
     List<ContactData> before = app.getContactHelper().getContactList();
