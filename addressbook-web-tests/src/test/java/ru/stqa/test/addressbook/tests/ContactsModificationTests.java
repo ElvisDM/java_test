@@ -34,7 +34,6 @@ public class ContactsModificationTests extends TestBase{
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Pavel")
             .withLastname("Ivanov").withAddress("China").withHomephone("+7(901)987-12-24").withMail("ivanov99@yandex.ru");
     app.contact().modify(contact);
-    app.goTo().homePage();
     Contacts after = app.contact().all();
     assertEquals(after.size(), before.size());
 

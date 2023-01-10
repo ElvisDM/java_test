@@ -54,6 +54,8 @@ public class ContactHelper extends HelperBase {
     initContactsModification(contact.getId());
     fillContactForm(contact, false);
     updateContacts();
+    returnToContactPage();
+    contactCache = null;
   }
 
   public void updateContacts() {
@@ -68,6 +70,8 @@ public class ContactHelper extends HelperBase {
     selectContactsById(contact.getId());
     deleteSelectedContacts();
     acceptAlert();
+    returnToContactPage();
+    contactCache = null;
   }
 
   public void create(ContactData contact) {
@@ -75,6 +79,8 @@ public class ContactHelper extends HelperBase {
     fillContactForm(new ContactData().withFirstname("Viktor").withLastname("Brovin").withAddress("Russia")
             .withHomephone("+7(901)683-09-76").withMail("brovin19@mail.ru").withGroup("test1"),true);
     saveContact();
+    returnToContactPage();
+    contactCache = null;
   }
   public boolean isThereASelectContact() {
     return isElementPresent(By.name("selected[]"));
@@ -88,18 +94,27 @@ public class ContactHelper extends HelperBase {
     return wd.findElements(By.name("selected[]")).size();
   }
 
+  private Contacts contactCache =  null;
+
   public Contacts all() {
-    Contacts contacts = new Contacts();
+    if (contactCache != null) {
+      return new Contacts(contactCache);
+    }
+    contactCache = new Contacts();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
     for (WebElement element: elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
+      contactCache.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname));
     }
-    return contacts;
+    return new Contacts(contactCache);
   }
+  public void returnToContactPage() {
+    click(By.linkText("home"));
+  }
+
 
 
 }

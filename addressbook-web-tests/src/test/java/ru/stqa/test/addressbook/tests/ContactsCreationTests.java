@@ -27,7 +27,6 @@ public class ContactsCreationTests extends TestBase {
     ContactData contact = new ContactData().withFirstname("Viktor").withLastname("Brovin")
             .withAddress("Russia").withHomephone("+7(901)683-09-76").withMail("brovin19@mail.ru").withGroup(group);
     app.contact().create(contact);
-    app.goTo().homePage();
     Contacts after = app.contact().all();
     assertThat(after.size(), equalTo(before.size() + 1));
 
