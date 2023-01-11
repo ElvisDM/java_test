@@ -26,13 +26,14 @@ public class ContactsModificationTests extends TestBase{
     }
   }
 
-  @Test(enabled = false)
+  @Test
   public void testContactsModification() {
     app.goTo().gotoHome();
     Contacts before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
-    ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Pavel")
-            .withLastname("Ivanov").withAddress("China").withHomephone("+7(901)987-12-24").withMail("ivanov99@yandex.ru");
+    ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Pavel").withLastname("Ivanov")
+            .withAddress("China").withHomephone("+7(901)987-12-24").withMobilephone("+7(906)258-189-44")
+            .withWorkphone("+7(495)153-54-19").withMail("ivanov99@yandex.ru");
     app.contact().modify(contact);
     Contacts after = app.contact().all();
     assertEquals(after.size(), before.size());

@@ -26,7 +26,7 @@ public class ContactsDeletionTests extends TestBase {
     }
   }
 
-  @Test(enabled = false)
+  @Test
   public void testContactsDeletion () {
     app.goTo().gotoHome();
     Contacts before = app.contact().all();

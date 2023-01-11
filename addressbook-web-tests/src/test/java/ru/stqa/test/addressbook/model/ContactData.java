@@ -18,6 +18,34 @@ public final class ContactData {
     return id;
   }
 
+  public String getFirstname() {
+    return firstname;
+  }
+
+  public String getLastname() {
+    return lastname;
+  }
+
+  public String getAddress() {
+    return address;
+  }
+
+  public String getHomephone() {
+    return homephone;
+  }
+
+  public String getMobilephone() {
+    return mobilephone;
+  }
+
+  public String getWorkphone() {
+    return workphone;
+  }
+
+  public String getMail() {
+    return mail;
+  }
+
   public String firstname() {
     return firstname;
   }
@@ -35,6 +63,7 @@ public final class ContactData {
   public String mobilephone() {
     return mobilephone;
   }
+
   public String workphone() {
     return workphone;
   }
