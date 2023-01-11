@@ -11,12 +11,24 @@ public final class ContactData {
   private String homephone;
   private String mobilephone;
   private String workphone;
+
+  private String allphones;
   private String mail;
   private String group;
 
   public int getId() {
     return id;
   }
+
+  public String getAllphones() {
+    return allphones;
+  }
+
+  public ContactData withAllphones(String allphones) {
+    this.allphones = allphones;
+    return this;
+  }
+
 
   public String getFirstname() {
     return firstname;
