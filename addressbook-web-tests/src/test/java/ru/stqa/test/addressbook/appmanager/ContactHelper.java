@@ -102,11 +102,12 @@ public class ContactHelper extends HelperBase {
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
       String allEmails = cells.get(4).getText();
+      String address = cells.get(3).getText();
       String allphones = cells.get(5).getText();
 
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
-              .withAllphones(allphones).withAllEmails(allEmails));
+              .withAllphones(allphones).withAllEmails(allEmails).withAddress(address));
     }
     return contacts;
   }
