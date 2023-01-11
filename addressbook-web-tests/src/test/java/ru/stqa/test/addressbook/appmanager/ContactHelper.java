@@ -23,7 +23,7 @@ public class ContactHelper extends HelperBase {
     type1(By.name("home"), contactData.homephone());
     type1(By.name("mobile"),contactData.mobilephone());
     type1(By.name("work"),contactData.workphone());
-    type1(By.name("email"), contactData.mail());
+    type1(By.name("email"), contactData.email());
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -78,7 +78,7 @@ public class ContactHelper extends HelperBase {
     gotoAddNewContactPage();
     fillContactForm(new ContactData().withFirstname("Viktor").withLastname("Brovin").withAddress("Russia")
             .withHomephone("+7(901)683-09-76").withMobilephone("+7 (970) 354-91-12").withWorkphone("+7 (993) 479-82-86")
-            .withMail("brovin19@mail.ru").withGroup("test1"),true);
+            .withEmail("brovin19@mail.ru").withGroup("test1"),true);
     saveContact();
     returnToContactPage();
   }
@@ -101,10 +101,12 @@ public class ContactHelper extends HelperBase {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String lastname = cells.get(1).getText();
       String firstname = cells.get(2).getText();
+      String allEmails = cells.get(4).getText();
       String allphones = cells.get(5).getText();
+
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       contacts.add(new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
-              .withAllphones(allphones));
+              .withAllphones(allphones).withAllEmails(allEmails));
     }
     return contacts;
   }
@@ -119,8 +121,13 @@ public class ContactHelper extends HelperBase {
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+    String address = wd.findElement(By.name("address")).getAttribute("value");
+    String email = wd.findElement(By.name("email")).getAttribute("value");
+    String email2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstname(firstname)
-            .withLastname(lastname).withHomephone(home).withMobilephone(mobile).withWorkphone(work);
+    return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
+            .withHomephone(home).withMobilephone(mobile).withWorkphone(work)
+            .withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3);
   }
 }

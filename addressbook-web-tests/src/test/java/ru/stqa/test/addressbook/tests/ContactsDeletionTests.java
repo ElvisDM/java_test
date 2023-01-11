@@ -22,7 +22,7 @@ public class ContactsDeletionTests extends TestBase {
     app.goTo().gotoHome();
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstname("Viktor").withLastname("Brovin")
-              .withAddress("Russia").withHomephone("+7(901)683-09-76").withMail("brovin19@mail.ru").withGroup(group));
+              .withAddress("Russia").withHomephone("+7(901)683-09-76").withEmail("brovin19@mail.ru").withGroup(group));
     }
   }
 
