@@ -20,10 +20,12 @@ public class ContactHelper extends HelperBase {
     type1(By.name("firstname"), contactData.firstname());
     type1(By.name("lastname"), contactData.lastname());
     type1(By.name("address"), contactData.address());
+    attach(By.name("photo"), contactData.getPhoto());
     type1(By.name("home"), contactData.homephone());
     type1(By.name("mobile"),contactData.mobilephone());
     type1(By.name("work"),contactData.workphone());
     type1(By.name("email"), contactData.email());
+
 
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -76,7 +78,7 @@ public class ContactHelper extends HelperBase {
 
   public void create(ContactData contact) {
     gotoAddNewContactPage();
-    fillContactForm(new ContactData().withFirstname("Viktor").withLastname("Brovin").withAddress("Russia")
+    fillContactForm(new ContactData().withFirstname("Viktor").withLastname("Brovin").withAddress("Russia").withPhoto(contact.getPhoto())
             .withHomephone("+7(901)683-09-76").withMobilephone("+7 (970) 354-91-12").withWorkphone("+7 (993) 479-82-86")
             .withEmail("brovin19@mail.ru").withGroup("test1"),true);
     saveContact();

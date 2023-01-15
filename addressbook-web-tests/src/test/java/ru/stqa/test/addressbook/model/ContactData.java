@@ -1,5 +1,6 @@
 package ru.stqa.test.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public final class ContactData {
@@ -17,6 +18,7 @@ public final class ContactData {
   private String email2;
   private String email3;
   private String group;
+  private File photo;
 
   private String allEmails;
 
@@ -72,6 +74,9 @@ public final class ContactData {
     return allEmails;
   }
 
+  public File getPhoto() {
+    return photo;
+  }
   public String firstname() {
     return firstname;
   }
@@ -174,6 +179,12 @@ public final class ContactData {
     this.allEmails = allEmails;
     return this;
   }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
 
   @Override
   public String toString() {
