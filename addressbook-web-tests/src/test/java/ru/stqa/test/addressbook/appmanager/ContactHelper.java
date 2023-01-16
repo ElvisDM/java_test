@@ -78,9 +78,9 @@ public class ContactHelper extends HelperBase {
 
   public void create(ContactData contact) {
     gotoAddNewContactPage();
-    fillContactForm(new ContactData().withFirstname("Viktor").withLastname("Brovin").withAddress("Russia").withPhoto(contact.getPhoto())
-            .withHomephone("+7(901)683-09-76").withMobilephone("+7 (970) 354-91-12").withWorkphone("+7 (993) 479-82-86")
-            .withEmail("brovin19@mail.ru").withGroup("test1"),true);
+    fillContactForm(new ContactData().withFirstname(contact.firstname()).withLastname(contact.lastname()).withAddress(contact.address())
+            .withHomephone(contact.homephone()).withMobilephone("+7 (970) 354-91-12").withWorkphone("+7 (993) 479-82-86")
+            .withEmail(contact.email()).withPhoto(contact.getPhoto()).withGroup("test1"),true);
     saveContact();
     returnToContactPage();
   }
