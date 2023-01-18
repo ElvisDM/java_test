@@ -1,5 +1,7 @@
 package ru.stqa.test.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -21,7 +23,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactsCreationTests extends TestBase {
   @DataProvider
-   public Iterator<Object[]> validContacts() throws IOException {
+   public Iterator<Object[]> validContactsFromXml() throws IOException {
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.xml")));
     String xml = "";
     String line = reader.readLine();
@@ -39,6 +41,19 @@ public class ContactsCreationTests extends TestBase {
     //list.add(new Object[]{new ContactData().withFirstname("Oleg").withLastname("Petrov").withAddress("Tula").withEmail("petrov82@ya.ru").withHomephone("+7(499)594-65-84").withMobilephone("+7(977)276-79-34")});
     //list.add(new Object[]{new ContactData().withFirstname("Maxim").withLastname("Karasev").withAddress("Kursk").withEmail("19karas@mail.ru").withHomephone("+7(498)942-32-91").withMobilephone("+7(906)466-73-55")});
   }
+  @DataProvider
+  public Iterator<Object[]> validContactsFromJson() throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")));
+    String json = "";
+    String line = reader.readLine();
+    while (line != null) {
+      json += line;
+      line = reader.readLine();
+    }
+    Gson gson = new Gson();
+    List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
+    return contacts.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
+  }
 
   String group = "test1";
   @BeforeMethod
@@ -49,7 +64,7 @@ public class ContactsCreationTests extends TestBase {
     }
   }
 
-  @Test(dataProvider = "validContacts")
+  @Test(dataProvider = "validContactsFromJson")
   public void testContactsCreation(ContactData contact) {
     File photo = new File("src/test/resources/Screenshot_1.png");
     //ContactData contact = new ContactData().withFirstname(firstname).withLastname(lastname).withAddress(address).withPhoto(photo).withHomephone(homephone).withEmail(email).withPhoto(photo);
