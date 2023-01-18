@@ -1,23 +1,16 @@
 <list>
   <contacts>
-    <firstname>Alex</firstname>
-    <lastname>Maximov</lastname>
-    <address>Moscow</address>
-    <homephone>+7(495)602-26-08</homephone>
-    <email>a.maximov@gmail.com</email>
+    <firstname>Alex 0</firstname>
+    <lastname>Maximov 0</lastname>
+    <address>Moscow 0</address>
+    <homephone>+7(495)600-26-08</homephone>
+    <email>0_a.maximov@gmail.com</email>
   </contacts>
   <contacts>
-    <firstname>Alex</firstname>
-    <lastname>Maximov</lastname>
-    <address>Moscow</address>
-    <homephone>+7(495)602-26-08</homephone>
-    <email>a.maximov@gmail.com</email>
-  </contacts>
-  <contacts>
-    <firstname>Alex</firstname>
-    <lastname>Maximov</lastname>
-    <address>Moscow</address>
-    <homephone>+7(495)602-26-08</homephone>
-    <email>a.maximov@gmail.com</email>
+    <firstname>Alex 1</firstname>
+    <lastname>Maximov 1</lastname>
+    <address>Moscow 1</address>
+    <homephone>+7(495)601-26-08</homephone>
+    <email>1_a.maximov@gmail.com</email>
   </contacts>
 </list>

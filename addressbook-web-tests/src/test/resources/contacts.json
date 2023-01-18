@@ -1,23 +1,16 @@
 [
   {
-    "firstname": "Alex",
-    "lastname": "Maximov",
-    "address": "Moscow",
-    "homephone": "+7(495)602-26-08",
-    "email": "a.maximov@gmail.com"
+    "firstname": "Alex 0",
+    "lastname": "Maximov 0",
+    "address": "Moscow 0",
+    "homephone": "+7(495)600-26-08",
+    "email": "0_a.maximov@gmail.com"
   },
   {
-    "firstname": "Alex",
-    "lastname": "Maximov",
-    "address": "Moscow",
-    "homephone": "+7(495)602-26-08",
-    "email": "a.maximov@gmail.com"
-  },
-  {
-    "firstname": "Alex",
-    "lastname": "Maximov",
-    "address": "Moscow",
-    "homephone": "+7(495)602-26-08",
-    "email": "a.maximov@gmail.com"
+    "firstname": "Alex 1",
+    "lastname": "Maximov 1",
+    "address": "Moscow 1",
+    "homephone": "+7(495)601-26-08",
+    "email": "1_a.maximov@gmail.com"
   }
 ]
