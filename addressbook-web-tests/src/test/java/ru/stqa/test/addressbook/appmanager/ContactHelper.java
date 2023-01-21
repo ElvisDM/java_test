@@ -74,6 +74,7 @@ public class ContactHelper extends HelperBase {
     selectContactsById(contact.getId());
     deleteSelectedContacts();
     acceptAlert();
+    wd.findElement(By.cssSelector("div.msgbox"));
     returnToContactPage();
   }
 
