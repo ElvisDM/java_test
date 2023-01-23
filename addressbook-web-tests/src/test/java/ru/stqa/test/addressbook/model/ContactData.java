@@ -3,32 +3,68 @@ package ru.stqa.test.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
 @XStreamAlias("contacts")
+
+@Entity
+@Table(name = "addressbook")
 public final class ContactData {
   @XStreamOmitField
+  @Id
+  @Column(name = "id")
   private  int id = Integer.MAX_VALUE;
   @Expose
+  @Column(name = "firstname")
   private String firstname;
   @Expose
+  @Column(name = "lastname")
   private String lastname;
   @Expose
+  @Column(name = "address")
+  @Type(type = "text")
   private String address;
   @Expose
+  @Column(name = "home")
+  @Type(type = "text")
   private String homephone;
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobilephone;
+  @Column(name = "work")
+  @Type(type = "text")
   private String workphone;
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
+
+  @Transient
   private String phone2;
+  @Transient
   private String allphones;
   @Expose
+  @Column(name = "email")
+  @Type(type = "text")
   private String email;
+  @Transient
   private String email2;
+  @Transient
   private String email3;
+  @Transient
   private String group;
-  private File photo;
-
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
+  @Transient
   private String allEmails;
 
   public String getPhone2() {
@@ -84,7 +120,7 @@ public final class ContactData {
   }
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
   public String firstname() {
     return firstname;
@@ -190,19 +226,10 @@ public final class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
 
   @Override
   public boolean equals(Object o) {
