@@ -61,9 +61,9 @@ public class ContactsCreationTests extends TestBase {
   String group = "test1";
   @BeforeMethod
   public void ensurePreconditions() {
-    app.goTo().groupPage();
-    if (! app.contact().isThereACheckGroupName(group)) {
-      app.group().create(new GroupData().withName(group).withHeader("test2").withFooter("test3"));
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName(group));
     }
   }
 
@@ -72,9 +72,9 @@ public class ContactsCreationTests extends TestBase {
     File photo = new File("src/test/resources/Screenshot_1.png");
     //ContactData contact = new ContactData().withFirstname(firstname).withLastname(lastname).withAddress(address).withPhoto(photo).withHomephone(homephone).withEmail(email).withPhoto(photo);
     app.goTo().gotoHome();
-    Contacts before = app.contact().all();
-    app.contact().create(contact);
-    Contacts after = app.contact().all();
+    Contacts before = app.db().contacts();
+    app.contact().create(contact.withPhoto(photo));
+    Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
 
     assertThat(after, equalTo(

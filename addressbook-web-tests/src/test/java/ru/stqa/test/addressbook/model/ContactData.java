@@ -37,16 +37,6 @@ public final class ContactData {
   @Column(name = "work")
   @Type(type = "text")
   private String workphone;
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
-  }
-
   @Transient
   private String phone2;
   @Transient
@@ -120,7 +110,11 @@ public final class ContactData {
   }
 
   public File getPhoto() {
-    return new File(photo);
+    if (photo != null) {
+      return new File(photo);
+    } else {
+      return null;
+    }
   }
   public String firstname() {
     return firstname;
@@ -251,4 +245,12 @@ public final class ContactData {
     return result;
   }
 
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            '}';
+  }
 }
