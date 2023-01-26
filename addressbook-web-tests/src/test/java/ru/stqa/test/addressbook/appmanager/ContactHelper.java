@@ -17,18 +17,21 @@ public class ContactHelper extends HelperBase {
   }
 
   public void fillContactForm(ContactData contactData, boolean creation) {
-    type1(By.name("firstname"), contactData.firstname());
-    type1(By.name("lastname"), contactData.lastname());
-    type1(By.name("address"), contactData.address());
+    type(By.name("firstname"), contactData.firstname());
+    type(By.name("lastname"), contactData.lastname());
+    type(By.name("address"), contactData.address());
     attach(By.name("photo"), contactData.getPhoto());
-    type1(By.name("home"), contactData.homephone());
-    type1(By.name("mobile"),contactData.mobilephone());
-    type1(By.name("work"),contactData.workphone());
-    type1(By.name("email"), contactData.email());
+    type(By.name("home"), contactData.homephone());
+    type(By.name("mobile"),contactData.mobilephone());
+    type(By.name("work"),contactData.workphone());
+    type(By.name("email"), contactData.email());
 
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+      if (contactData.getGroups().size() > 0) {
+        Assert.assertTrue(contactData.getGroups().size() == 1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -82,7 +85,7 @@ public class ContactHelper extends HelperBase {
     gotoAddNewContactPage();
     fillContactForm(new ContactData().withFirstname(contact.firstname()).withLastname(contact.lastname()).withAddress(contact.address())
             .withHomephone(contact.homephone()).withMobilephone("+7 (970) 354-91-12").withWorkphone("+7 (993) 479-82-86")
-            .withEmail(contact.email()).withPhoto(contact.getPhoto()).withGroup("test1"),true);
+            .withEmail(contact.email()).withPhoto(contact.getPhoto()),true);
     saveContact();
     returnToContactPage();
   }
