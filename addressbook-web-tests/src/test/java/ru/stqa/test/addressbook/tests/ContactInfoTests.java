@@ -20,7 +20,7 @@ public class ContactInfoTests extends TestBase{
     if (! app.contact().isThereACheckGroupName(group)) {
       app.group().create(new GroupData().withName(group).withHeader("test2").withFooter("test3"));
     }
-    app.goTo().gotoHome();
+    app.goTo().Home();
     if (app.contact().all().size() == 0) {
       app.contact().create(new ContactData().withFirstname("Viktor").withLastname("Brovin")
               .withAddress("Russia").withHomephone("+7(901)683-09-76").withEmail("brovin19@mail.ru"));
@@ -29,7 +29,7 @@ public class ContactInfoTests extends TestBase{
 
   @Test
   public void testContactInfo() {
-    app.goTo().gotoHome();
+    app.goTo().Home();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 

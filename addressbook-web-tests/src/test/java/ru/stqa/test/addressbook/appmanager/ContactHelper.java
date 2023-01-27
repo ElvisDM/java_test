@@ -83,9 +83,9 @@ public class ContactHelper extends HelperBase {
 
   public void create(ContactData contact) {
     gotoAddNewContactPage();
-    fillContactForm(new ContactData().withFirstname(contact.firstname()).withLastname(contact.lastname()).withAddress(contact.address())
+    fillContactForm(contact.withFirstname(contact.firstname()).withLastname(contact.lastname()).withAddress(contact.address())
             .withHomephone(contact.homephone()).withMobilephone("+7 (970) 354-91-12").withWorkphone("+7 (993) 479-82-86")
-            .withEmail(contact.email()).withPhoto(contact.getPhoto()),true);
+            .withEmail(contact.email()).withPhoto(contact.getPhoto()), true);
     saveContact();
     returnToContactPage();
   }
@@ -138,5 +138,10 @@ public class ContactHelper extends HelperBase {
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
             .withHomephone(home).withMobilephone(mobile).withWorkphone(work).withPhone2(phone2)
             .withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3);
+  }
+
+  public void addContactToGroup(String name) {
+    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(name);
+    click(By.cssSelector("input[name='add']"));
   }
 }

@@ -72,11 +72,10 @@ public class ContactsCreationTests extends TestBase {
   public void testContactsCreation(ContactData contact) {
     Groups groups = app.db().groups();
     File photo = new File("src/test/resources/Screenshot_1.png");
-    ContactData newContact = new ContactData().inGroup(groups.iterator().next());
     //ContactData contact = new ContactData().withFirstname(firstname).withLastname(lastname).withAddress(address).withPhoto(photo).withHomephone(homephone).withEmail(email).withPhoto(photo);
-    app.goTo().gotoHome();
+    app.goTo().Home();
     Contacts before = app.db().contacts();
-    app.contact().create(newContact.withPhoto(photo));
+    app.contact().create(contact.inGroup(groups.iterator().next()).withPhoto(photo));
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
 
