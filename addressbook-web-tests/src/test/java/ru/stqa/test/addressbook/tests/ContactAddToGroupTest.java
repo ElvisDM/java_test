@@ -2,22 +2,44 @@ package ru.stqa.test.addressbook.tests;
 
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.test.addressbook.model.ContactData;
 import ru.stqa.test.addressbook.model.Contacts;
 import ru.stqa.test.addressbook.model.GroupData;
 import ru.stqa.test.addressbook.model.Groups;
 
+import java.io.File;
 import java.util.Set;
 
 public class ContactAddToGroupTest extends TestBase {
 
+  @BeforeMethod
+  public void ensurePreconditions() {
+    String group = "test4";
+    File photo = new File("src/test/resources/Screenshot_1.png");
+    if (app.db().groups().size() == 0) {
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName(group));
+    }
+    if (app.db().contacts().size() == 0) {
+      app.contact().create(new ContactData().withFirstname("Viktor").withLastname("Brovin")
+              .withAddress("Russia").withHomephone("+7(901)683-09-76").withEmail("brovin19@mail.ru").withPhoto(photo));
+    }
+
+  }
+
   @Test
   public void testContactAddToGroup() {
+    File photo = new File("src/test/resources/Screenshot_1.png");
     app.goTo().Home();
     Contacts contacts = app.db().contacts();
     ContactData selectContact = contactAddToGroup(contacts);
     ContactData before = selectContact;
+    if (selectContact == null || contactAddToGroup(contacts) == null) {
+      app.contact().create(new ContactData().withFirstname("Andrey").withLastname("Orlov")
+              .withAddress("Volgograd").withHomephone("+7(906)258-15-58").withEmail("orlov_80@list.ru").withPhoto(photo));
+    }
 
     app.contact().selectContactsById(selectContact.getId());
     app.contact().contactAddToGroup(notGroupInContact().getName());
@@ -28,7 +50,7 @@ public class ContactAddToGroupTest extends TestBase {
 
   }
 
-  private GroupData notGroupInContact() {
+  public GroupData notGroupInContact() {
     Contacts contacts = app.db().contacts();
     Groups groupInContact = contactAddToGroup(contacts).getGroups();
     Groups listGroups = app.db().groups();
@@ -37,7 +59,7 @@ public class ContactAddToGroupTest extends TestBase {
     return group;
   }
 
-  private ContactData contactAddToGroup(Contacts contacts) {
+  public ContactData contactAddToGroup(Contacts contacts) {
     for (ContactData contact : contacts) {
       Set<GroupData> ContactInGroup = contact.getGroups();
       int listGroups = app.db().groups().size();
