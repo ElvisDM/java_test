@@ -10,6 +10,7 @@ import ru.stqa.test.addressbook.model.GroupData;
 import ru.stqa.test.addressbook.model.Groups;
 
 import java.io.File;
+import java.util.Set;
 
 public class ContactRemoveFromGroupTest extends TestBase {
 
@@ -31,7 +32,7 @@ public class ContactRemoveFromGroupTest extends TestBase {
     for (ContactData contact: contacts) {
       if (contact.getGroups().size() == 0 || contacts.size() != 0) {
         app.contact().selectContactsById(contact.getId());
-        app.contact().contactAddToGroup();
+        app.contact().contactAddToGroup(notGroupInContact().getName());
       }
     }
   }
@@ -56,5 +57,24 @@ public class ContactRemoveFromGroupTest extends TestBase {
     Contacts contacts = app.db().contacts();
     GroupData groupWithContact = app.contact().contactInGroup(contacts).getGroups().iterator().next();
     return groupWithContact;
+  }
+  public ContactData contactAddToGroup(Contacts contacts) {
+    for (ContactData contact : contacts) {
+      Set<GroupData> ContactInGroup = contact.getGroups();
+      int listGroups = app.db().groups().size();
+      if (listGroups > ContactInGroup.size()) {
+        return contact;
+      }
+    }
+    return null;
+  }
+
+  public GroupData notGroupInContact() {
+    Contacts contacts = app.db().contacts();
+    Groups groupInContact = contactAddToGroup(contacts).getGroups();
+    Groups listGroups = app.db().groups();
+    listGroups.removeAll(groupInContact);
+    GroupData group = listGroups.iterator().next();
+    return group;
   }
 }
