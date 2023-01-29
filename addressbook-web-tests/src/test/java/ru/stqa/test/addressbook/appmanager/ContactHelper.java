@@ -140,8 +140,9 @@ public class ContactHelper extends HelperBase {
             .withAddress(address).withEmail(email).withEmail2(email2).withEmail3(email3);
   }
 
-  public void addContactToGroup(String name) {
+  public void contactAddToGroup(String name) {
     new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(name);
-    click(By.cssSelector("input[name='add']"));
+    click(By.xpath("//input[@name='add']"));
   }
+
 }
