@@ -1,7 +1,5 @@
 package ru.stqa.test.addressbook.tests;
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.test.addressbook.model.ContactData;
@@ -11,6 +9,9 @@ import ru.stqa.test.addressbook.model.Groups;
 
 import java.io.File;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactAddToGroupTest extends TestBase {
 
@@ -23,19 +24,19 @@ public class ContactAddToGroupTest extends TestBase {
       app.group().create(new GroupData().withName(group));
     }
     if (app.db().contacts().size() == 0) {
+      app.goTo().Home();
       app.contact().create(new ContactData().withFirstname("Viktor").withLastname("Brovin")
               .withAddress("Russia").withHomephone("+7(901)683-09-76").withEmail("brovin19@mail.ru").withPhoto(photo));
     }
-
   }
 
   @Test
   public void testContactAddToGroup() {
     File photo = new File("src/test/resources/Screenshot_1.png");
-    app.goTo().Home();
     Contacts contacts = app.db().contacts();
     ContactData selectContact = contactAddToGroup(contacts);
-    ContactData before = selectContact;
+    app.goTo().Home();
+
     if (selectContact == null || contactAddToGroup(contacts) == null) {
       app.contact().create(new ContactData().withFirstname("Andrey").withLastname("Orlov")
               .withAddress("Volgograd").withHomephone("+7(906)258-15-58").withEmail("orlov_80@list.ru").withPhoto(photo));
@@ -45,8 +46,7 @@ public class ContactAddToGroupTest extends TestBase {
     app.contact().contactAddToGroup(notGroupInContact().getName());
 
     ContactData after = selectContact.inGroup(notGroupInContact());
-    MatcherAssert.assertThat(after, CoreMatchers.equalTo(before));
-
+    assertThat(after, equalTo(selectContact));
 
   }
 
