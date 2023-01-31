@@ -39,7 +39,6 @@ public class ContactRemoveFromGroupTest extends TestBase {
 
   @Test
   public void testContactRemoveFromGroup() {
-    app.goTo().Home();
 
     Contacts contacts = app.db().contacts();
     ContactData before = app.contact().contactInGroup(contacts);
@@ -55,8 +54,7 @@ public class ContactRemoveFromGroupTest extends TestBase {
 
   private GroupData selectGroup() {
     Contacts contacts = app.db().contacts();
-    GroupData groupWithContact = app.contact().contactInGroup(contacts).getGroups().iterator().next();
-    return groupWithContact;
+    return app.contact().contactInGroup(contacts).getGroups().iterator().next();
   }
   public ContactData contactAddToGroup(Contacts contacts) {
     for (ContactData contact : contacts) {

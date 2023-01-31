@@ -42,6 +42,8 @@ public class ContactAddToGroupTest extends TestBase {
               .withAddress("Volgograd").withHomephone("+7(906)258-15-58").withEmail("orlov_80@list.ru").withPhoto(photo));
     }
 
+    GroupData groupToContact = notGroupInContact();
+
     app.contact().selectContactsById(selectContact.getId());
     app.contact().contactAddToGroup(notGroupInContact().getName());
 
