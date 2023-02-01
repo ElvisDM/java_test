@@ -10,7 +10,6 @@ import ru.stqa.test.addressbook.model.GroupData;
 import ru.stqa.test.addressbook.model.Groups;
 
 import java.io.File;
-import java.util.Set;
 
 public class ContactRemoveFromGroupTest extends TestBase {
 
@@ -18,6 +17,7 @@ public class ContactRemoveFromGroupTest extends TestBase {
   public void ensurePreconditions() {
     String group = "test4";
     File photo = new File("src/test/resources/Screenshot_1.png");
+
     Contacts contacts = app.db().contacts();
     Groups groups = app.db().groups();
     if (app.db().groups().size() == 0) {
@@ -26,13 +26,15 @@ public class ContactRemoveFromGroupTest extends TestBase {
     }
     app.goTo().Home();
     if (app.db().contacts().size() == 0) {
-      app.contact().create(new ContactData().withFirstname("Viktor").withLastname("Brovin")
-              .withAddress("Russia").withHomephone("+7(901)683-09-76").withEmail("brovin19@mail.ru").withPhoto(photo));
+      app.contact().create(new ContactData().withFirstname("Andrey").withLastname("Orlov")
+              .withAddress("Volgograd").withHomephone("+7(906)258-14-39").withEmail("orlov_80@list.ru").withPhoto(photo));
     }
+    GroupData addedGroup = groups.iterator().next();
+    ContactData contactToGroup = contacts.iterator().next();
     for (ContactData contact: contacts) {
-      if (contact.getGroups().size() == 0 || contacts.size() != 0) {
-        app.contact().selectContactsById(contact.getId());
-        app.contact().contactAddToGroup(notGroupInContact().getName());
+      if (contact.getGroups().size() == 0) {
+        app.contact().selectContactsById(contactToGroup.getId());
+        app.contact().contactAddToGroup(addedGroup.getName());
       }
     }
   }
@@ -40,39 +42,21 @@ public class ContactRemoveFromGroupTest extends TestBase {
   @Test
   public void testContactRemoveFromGroup() {
 
+    app.goTo().Home();
+
     Contacts contacts = app.db().contacts();
-    ContactData before = app.contact().contactInGroup(contacts);
-    GroupData selectedGroup = selectGroup();
+    ContactData contactToGroup = contacts.iterator().next();
+    GroupData removedGroup = contactToGroup.getGroups().iterator().next();
 
-    app.contact().selectGroup(selectedGroup.getName());
-    app.contact().removeContactFromGroup(app.contact().contactInGroup(contacts));
+    app.contact().gotoGroupWhithContact(removedGroup.getId());
+    app.contact().selectContactsById(contactToGroup.getId());
+    app.contact().removeContactFromGroup();
 
-    ContactData after = before.inGroup(selectedGroup);
-    MatcherAssert.assertThat(after, Matchers.equalTo(before));
+    ContactData after = contactToGroup.inGroup(removedGroup);
+
+    MatcherAssert.assertThat(after, Matchers.equalTo(contacts));
+    verifyContactListInUI();
 
   }
 
-  private GroupData selectGroup() {
-    Contacts contacts = app.db().contacts();
-    return app.contact().contactInGroup(contacts).getGroups().iterator().next();
-  }
-  public ContactData contactAddToGroup(Contacts contacts) {
-    for (ContactData contact : contacts) {
-      Set<GroupData> ContactInGroup = contact.getGroups();
-      int listGroups = app.db().groups().size();
-      if (listGroups > ContactInGroup.size()) {
-        return contact;
-      }
-    }
-    return null;
-  }
-
-  public GroupData notGroupInContact() {
-    Contacts contacts = app.db().contacts();
-    Groups groupInContact = contactAddToGroup(contacts).getGroups();
-    Groups listGroups = app.db().groups();
-    listGroups.removeAll(groupInContact);
-    GroupData group = listGroups.iterator().next();
-    return group;
-  }
 }

@@ -10,58 +10,58 @@ import ru.stqa.test.addressbook.model.Groups;
 import java.io.File;
 import java.util.Set;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class ContactAddToGroupTest extends TestBase {
 
+
   @BeforeMethod
   public void ensurePreconditions() {
-    String group = "test4";
+
     File photo = new File("src/test/resources/Screenshot_1.png");
+    String group = "test4";
+
     if (app.db().groups().size() == 0) {
       app.goTo().groupPage();
       app.group().create(new GroupData().withName(group));
     }
-    if (app.db().contacts().size() == 0) {
+    Contacts contacts = app.db().contacts();
+    if (app.db().contacts().size() == 0 || contactToGroup(contacts) == null) {
       app.goTo().Home();
-      app.contact().create(new ContactData().withFirstname("Viktor").withLastname("Brovin")
-              .withAddress("Russia").withHomephone("+7(901)683-09-76").withEmail("brovin19@mail.ru").withPhoto(photo));
+      app.contact().create(new ContactData().withFirstname("Andrey").withLastname("Orlov")
+              .withAddress("Volgograd").withHomephone("+7(906)258-14-39").withEmail("orlov_80@list.ru").withPhoto(photo));
     }
   }
 
   @Test
   public void testContactAddToGroup() {
-    File photo = new File("src/test/resources/Screenshot_1.png");
+
     Contacts contacts = app.db().contacts();
-    ContactData selectContact = contactAddToGroup(contacts);
+    ContactData contactToGroup = contactToGroup(contacts);
+    GroupData addedGroup = notGroupInContact();
+
     app.goTo().Home();
+    app.contact().selectContactsById(contactToGroup.getId());
+    app.contact().contactAddToGroup(addedGroup.getName());
 
-    if (selectContact == null || contactAddToGroup(contacts) == null) {
-      app.contact().create(new ContactData().withFirstname("Andrey").withLastname("Orlov")
-              .withAddress("Volgograd").withHomephone("+7(906)258-15-58").withEmail("orlov_80@list.ru").withPhoto(photo));
-    }
+    Contacts after = app.db().contacts();
 
-    GroupData groupToContact = notGroupInContact();
-
-    app.contact().selectContactsById(selectContact.getId());
-    app.contact().contactAddToGroup(notGroupInContact().getName());
-
-    ContactData after = selectContact.inGroup(notGroupInContact());
-    assertThat(after, equalTo(selectContact));
+    assertThat(after, equalTo(contacts.without(contactToGroup).withAdded(contactToGroup.inGroup(addedGroup))));
+    verifyContactListInUI();
 
   }
 
   public GroupData notGroupInContact() {
     Contacts contacts = app.db().contacts();
-    Groups groupInContact = contactAddToGroup(contacts).getGroups();
+    Groups groupInContact = contactToGroup(contacts).getGroups();
     Groups listGroups = app.db().groups();
     listGroups.removeAll(groupInContact);
     GroupData group = listGroups.iterator().next();
     return group;
   }
 
-  public ContactData contactAddToGroup(Contacts contacts) {
+  public ContactData contactToGroup(Contacts contacts) {
     for (ContactData contact : contacts) {
       Set<GroupData> ContactInGroup = contact.getGroups();
       int listGroups = app.db().groups().size();
