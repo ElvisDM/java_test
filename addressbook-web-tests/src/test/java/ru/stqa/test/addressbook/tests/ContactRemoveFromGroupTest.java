@@ -1,7 +1,5 @@
 package ru.stqa.test.addressbook.tests;
 
-import org.hamcrest.MatcherAssert;
-import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.test.addressbook.model.ContactData;
@@ -10,6 +8,9 @@ import ru.stqa.test.addressbook.model.GroupData;
 import ru.stqa.test.addressbook.model.Groups;
 
 import java.io.File;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 public class ContactRemoveFromGroupTest extends TestBase {
 
@@ -27,12 +28,14 @@ public class ContactRemoveFromGroupTest extends TestBase {
     app.goTo().Home();
     if (app.db().contacts().size() == 0) {
       app.contact().create(new ContactData().withFirstname("Andrey").withLastname("Orlov")
-              .withAddress("Volgograd").withHomephone("+7(906)258-14-39").withEmail("orlov_80@list.ru").withPhoto(photo));
+              .withAddress("Volgograd").withHomephone("+7(906)258-14-39").withEmail("orlov_80@list.ru")
+              .withPhoto(photo).inGroup(groups.iterator().next()));
     }
-    GroupData addedGroup = groups.iterator().next();
-    ContactData contactToGroup = contacts.iterator().next();
+    groups = app.db().groups();
     for (ContactData contact: contacts) {
       if (contact.getGroups().size() == 0) {
+        GroupData addedGroup = groups.iterator().next();
+        ContactData contactToGroup = contacts.iterator().next();
         app.contact().selectContactsById(contactToGroup.getId());
         app.contact().contactAddToGroup(addedGroup.getName());
       }
@@ -48,13 +51,14 @@ public class ContactRemoveFromGroupTest extends TestBase {
     ContactData contactToGroup = contacts.iterator().next();
     GroupData removedGroup = contactToGroup.getGroups().iterator().next();
 
+
     app.contact().gotoGroupWhithContact(removedGroup.getId());
     app.contact().selectContactsById(contactToGroup.getId());
     app.contact().removeContactFromGroup();
 
     ContactData after = contactToGroup.inGroup(removedGroup);
 
-    MatcherAssert.assertThat(after, Matchers.equalTo(contacts));
+    assertThat(after, equalTo(contactToGroup));
     verifyContactListInUI();
 
   }

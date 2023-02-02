@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 public class RegistrationTests extends TestBase {
 
 
-  @Test
+  @Test (enabled = true)
   public void testRegistration() {
     app.registration().start("user1", "user1@localhost.localdomain");
 
