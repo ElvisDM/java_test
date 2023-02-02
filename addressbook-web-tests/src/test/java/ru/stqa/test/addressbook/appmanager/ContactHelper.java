@@ -50,7 +50,6 @@ public class ContactHelper extends HelperBase {
   }
   public void gotoAddNewContactPage() {
     wd.findElement(By.linkText("add new")).click();
-    if (isElementPresent(By.name("new_group"))) {}
   }
 
   public void initContactsModificationById(int id) {
