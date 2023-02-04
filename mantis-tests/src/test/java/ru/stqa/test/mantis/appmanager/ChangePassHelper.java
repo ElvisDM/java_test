@@ -1,10 +1,8 @@
 package ru.stqa.test.mantis.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class ChangePassHelper extends HelperBase{
-  private WebDriver wd;
 
   public ChangePassHelper(ApplicationManager app) {
     super(app);
@@ -13,6 +11,7 @@ public class ChangePassHelper extends HelperBase{
   public void loginUnderAdmin() {
     wd.get(app.getProperty("web.baseUrl") + "/login_page.php");
     type(By.name("username"), "administrator");
+    click(By.xpath("//input[@value='Login']"));
     type(By.name("password"), "root");
     click(By.xpath("//input[@value='Login']"));
   }
