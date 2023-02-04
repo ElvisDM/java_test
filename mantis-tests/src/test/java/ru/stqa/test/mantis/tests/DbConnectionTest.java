@@ -15,7 +15,6 @@ public class DbConnectionTest {
       ResultSet rs = st.executeQuery("select id, username, email, password from mantis_user_table");
 
       while (rs.next()) {
-        new UserData().withId(rs.getInt("id")).withName(rs.getString("username"));
 
       }
 

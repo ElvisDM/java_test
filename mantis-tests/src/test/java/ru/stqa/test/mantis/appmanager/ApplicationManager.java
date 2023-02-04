@@ -1,5 +1,6 @@
 package ru.stqa.test.mantis.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -21,7 +22,7 @@ public class ApplicationManager {
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
   private MailHelper mailHelper;
-  private LoginHelper logiHelper;
+  private ChangePassHelper logiHelper;
   private JamesHelper jamesHelper;
 
   public ApplicationManager(String browser){
@@ -81,9 +82,9 @@ public class ApplicationManager {
     return mailHelper;
   }
 
-  public LoginHelper login() {
+  public ChangePassHelper changePass() {
     if (logiHelper == null) {
-      logiHelper = new LoginHelper(this);
+      logiHelper = new ChangePassHelper(this);
     }
     return logiHelper;
   }
@@ -92,5 +93,10 @@ public class ApplicationManager {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
+  }
+
+  public String getUserName() {
+    String user = wd.findElement(By.name("username")).getAttribute("value");
+    return user;
   }
 }

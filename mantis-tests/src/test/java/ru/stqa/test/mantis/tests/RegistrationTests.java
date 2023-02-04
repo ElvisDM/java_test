@@ -5,6 +5,7 @@ import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
 import ru.stqa.test.mantis.model.MailMessage;
 
+import javax.mail.MessagingException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -16,7 +17,7 @@ public class RegistrationTests extends TestBase {
   }
 
   @Test (enabled = true)
-  public void testRegistration() throws IOException, ParseException {
+  public void testRegistration() throws IOException, ParseException, MessagingException {
 
     long now = System.currentTimeMillis();
     String user = String.format("user%s", now);
