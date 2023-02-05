@@ -26,13 +26,13 @@ public class ContactRemoveFromGroupTest extends TestBase {
       app.group().create(new GroupData().withName(group));
     }
 
+    groups = app.db().groups();
     if (app.db().contacts().size() == 0) {
       app.goTo().Home();
       app.contact().create(new ContactData().withFirstname("Andrey").withLastname("Orlov")
               .withAddress("Volgograd").withHomephone("+7(906)258-14-39").withEmail("orlov_80@list.ru")
               .withPhoto(photo).inGroup(groups.iterator().next()));
     }
-    groups = app.db().groups();
     app.goTo().Home();
     for (ContactData contact: contacts) {
       if (contact.getGroups().size() == 0) {

@@ -1,8 +1,8 @@
 package ru.stqa.test.mantis.appmanager;
 
 import org.apache.commons.net.telnet.TelnetClient;
-import org.subethamail.smtp.server.Session;
 import ru.stqa.test.mantis.model.MailMessage;
+import javax.mail.Session;
 
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -29,7 +29,7 @@ public class JamesHelper {
   public JamesHelper(ApplicationManager app) {
     this.app = app;
     telnet = new TelnetClient();
-    //mailSession = Session.getDefaultInstance(System.getProperties());
+    mailSession = Session.getDefaultInstance(System.getProperties());
   }
 
   public boolean doesUserExist(String name) {
@@ -122,7 +122,7 @@ public class JamesHelper {
   }
 
   private Folder openInbox(String username, String password) throws MessagingException {
-    //store = mailSession.getStore("pop3");
+    store = mailSession.getStore("pop3");
     store.connect(mailServer, username, password);
     Folder folder = store.getDefaultFolder().getFolder("INBOX");
     folder.open(Folder.READ_WRITE);

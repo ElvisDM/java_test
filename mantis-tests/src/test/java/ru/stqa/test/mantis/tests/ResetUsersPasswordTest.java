@@ -5,6 +5,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.lanwen.verbalregex.VerbalExpression;
+import ru.stqa.test.mantis.appmanager.HttpSession;
 import ru.stqa.test.mantis.model.MailMessage;
 
 import java.io.IOException;
@@ -29,12 +30,17 @@ public class ResetUsersPasswordTest extends TestBase{
 
     app.changePass().resetPass();
 
-    List<MailMessage> mailMessages = app.mail().waitForMail(1, 10000);
+    List<MailMessage> mailMessages = app.mail().waitForMail(1, 20000);
     String confirmationLink = findConfirmationLink(mailMessages, email);
 
 
     app.registration().finish(confirmationLink, password);
-    Assert.assertTrue(app.newSession().login(user, password));
+
+    HttpSession session = app.newSession();
+    Assert.assertTrue(session.login(user, password));
+    Assert.assertTrue(session.isLoggedInAs(user));
+
+
 
   }
 
