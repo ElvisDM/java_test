@@ -1,14 +1,11 @@
 apply plugin: 'java'
 
-
 repositories {
     mavenCentral()
 }
-
 dependencies {
     implementation 'org.testng:testng:7.7.0'
-    implementation 'org.jetbrains:annotations:23.0.0'
-    implementation 'org.hamcrest:java-hamcrest:2.0.0.0'
+
 }
 buildscript{
     repositories{
@@ -20,10 +17,13 @@ buildscript{
     }
 }
 
+apply plugin: 'no.nils.wsdl2java'
+
 wsdl2java {
     wsdlDir = file("src/main/resources") // define to support incremental build
     wsdlsToGenerate = [   //  2d-array of wsdls and cxf-parameters
                           ["$projectDir/src/main/resources/geoipservice.wsdl"],
+
     ]
     cxfVersion = "2.7.0"
 }
