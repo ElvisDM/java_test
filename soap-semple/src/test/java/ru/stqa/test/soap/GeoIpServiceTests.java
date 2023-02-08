@@ -8,7 +8,7 @@ public class GeoIpServiceTests {
 
   @Test
   public void MyIp() {
-    String ipLocation = new GeoIPService().getGeoIPServiceSoap12().getIpLocation("192.28.29.152");
+    String ipLocation = new GeoIPService().getGeoIPServiceSoap12().getIpLocation("31.130.54.17");
     //Assert.assertEquals();
     System.out.println(ipLocation);
   }
