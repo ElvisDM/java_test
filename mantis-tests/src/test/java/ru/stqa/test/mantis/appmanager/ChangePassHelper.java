@@ -35,6 +35,6 @@ public class ChangePassHelper extends HelperBase{
   }
 
   private void goToManage() {
-    click(By.xpath("//div[@id='sidebar']/ul/li[6]/a/i"));
+    click(By.xpath("//div[@id='sidebar']/ul/li[7]/a/i"));
   }
 }
