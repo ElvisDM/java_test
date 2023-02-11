@@ -1,4 +1,4 @@
-package ru.stqa.test.rest;
+package ru.stqa.test.rest.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 import java.util.Set;
 
-public class RestAssuedTests {
+public class RestAssuedTests extends TestBase{
 
   @BeforeClass
   public void init() {
@@ -21,6 +21,7 @@ public class RestAssuedTests {
 
   @Test
   public void testCreateIssue() throws IOException {
+    skipIfNotFixed(04);
     Set<Issue> oldIssues = getIssue();
     Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
     int issueId = createIssue(newIssue);
