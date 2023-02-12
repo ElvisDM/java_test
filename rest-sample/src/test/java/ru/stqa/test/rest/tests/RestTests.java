@@ -16,7 +16,7 @@ public class RestTests extends TestBase {
 
   @Test
   public void testCreateIssue() throws IOException {
-    skipIfNotFixed(01);
+    skipIfNotFixed(3);
     Set<Issue> oldIssues = getIssue();
     Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
     int issueId = createIssue(newIssue);
@@ -26,7 +26,7 @@ public class RestTests extends TestBase {
   }
 
   private Set<Issue> getIssue() throws IOException {
-    String json = getExecutor().execute(Request.Get("https://bugify.stqa.ru/api/issues.json"))
+    String json = getExecutor().execute(Request.Get("https://bugify.stqa.ru/api/issues.json?limit=100"))
             .returnContent().asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");

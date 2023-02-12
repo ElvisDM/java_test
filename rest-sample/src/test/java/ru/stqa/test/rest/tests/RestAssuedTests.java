@@ -21,7 +21,7 @@ public class RestAssuedTests extends TestBase{
 
   @Test
   public void testCreateIssue() throws IOException {
-    skipIfNotFixed(04);
+    skipIfNotFixed(3);
     Set<Issue> oldIssues = getIssue();
     Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
     int issueId = createIssue(newIssue);
@@ -31,7 +31,7 @@ public class RestAssuedTests extends TestBase{
   }
 
   private Set<Issue> getIssue() throws IOException {
-    String json = RestAssured.get("https://bugify.stqa.ru/api/issues.json").asString();
+    String json = RestAssured.get("https://bugify.stqa.ru/api/issues.json?limit=100").asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
     return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
