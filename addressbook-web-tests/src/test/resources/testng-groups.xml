@@ -4,7 +4,7 @@
     <test name="Groups" >
         <classes>
 
-            <class name="ru.stqa.test.addressbook.tests.ContactsModificationTests" />
+            <class name="ru.stqa.test.addressbook.tests.GroupModificationTests" />
 
         </classes>
     </test>
