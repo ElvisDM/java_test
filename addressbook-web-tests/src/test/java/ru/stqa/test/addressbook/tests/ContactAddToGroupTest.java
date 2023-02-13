@@ -1,5 +1,6 @@
 package ru.stqa.test.addressbook.tests;
 
+import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.test.addressbook.model.ContactData;
@@ -39,16 +40,18 @@ public class ContactAddToGroupTest extends TestBase {
 
     Contacts contacts = app.db().contacts();
     ContactData contactToGroup = contactToGroup(contacts);
+    Contacts before = contacts.without(contactToGroup);
     GroupData addedGroup = notGroupInContact();
-    ContactData before = contactToGroup.inGroup(addedGroup);
 
     app.goTo().Home();
     app.contact().selectContactsById(contactToGroup.getId());
     app.contact().contactAddToGroup(addedGroup.getName());
+    ContactData modifiedContact = contactToGroup.inGroup(addedGroup);
 
-    ContactData after = contactToGroup.inGroup(addedGroup);
+    Contacts after = app.db().contacts();
 
-    assertThat(after, equalTo(before));
+    assertThat(after.size(), equalTo(contacts.size()));
+    MatcherAssert.assertThat(after, equalTo(before.without(modifiedContact)));
     verifyContactListInUI();
 
   }

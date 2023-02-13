@@ -234,7 +234,9 @@ public final class ContactData {
 
     if (id != that.id) return false;
     if (!Objects.equals(firstname, that.firstname)) return false;
-    return Objects.equals(lastname, that.lastname);
+    if (!Objects.equals(lastname, that.lastname)) return false;
+    if (!Objects.equals(allEmails, that.allEmails)) return false;
+    return Objects.equals(groups, that.groups);
   }
 
   @Override
@@ -242,6 +244,8 @@ public final class ContactData {
     int result = id;
     result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (allEmails != null ? allEmails.hashCode() : 0);
+    result = 31 * result + (groups != null ? groups.hashCode() : 0);
     return result;
   }
 
