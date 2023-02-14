@@ -1,5 +1,6 @@
 package ru.stqa.test.addressbook.tests;
 
+import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.test.addressbook.model.ContactData;
@@ -50,19 +51,33 @@ public class ContactRemoveFromGroupTest extends TestBase {
     app.goTo().Home();
 
     Contacts contacts = app.db().contacts();
-    ContactData contactToGroup = contacts.iterator().next();
+    ContactData contactToGroup = contactWithGroup();
+    Contacts before = contacts.without(contactToGroup);
     GroupData removedGroup = contactToGroup.getGroups().iterator().next();
 
 
     app.contact().gotoGroupWhithContact(removedGroup.getId());
     app.contact().selectContactsById(contactToGroup.getId());
     app.contact().removeContactFromGroup();
+    ContactData modifiedContact = contactToGroup.inGroup(removedGroup);
 
-    ContactData after = contactToGroup.inGroup(removedGroup);
+    Contacts after = app.db().contacts();
 
-    assertThat(after, equalTo(contactToGroup));
+    assertThat(after.size(), equalTo(contacts.size()));
+    MatcherAssert.assertThat(after, equalTo(before.withAdded(modifiedContact)));
     verifyContactListInUI();
 
   }
 
+  private ContactData contactWithGroup() {
+    Contacts contacts = app.db().contacts();
+    ContactData contactToGroup = null;
+    for (ContactData contact: contacts) {
+      if (contact.getGroups().size() > 0) {
+        contactToGroup = contact;
+        break;
+      }
+    }
+    return contactToGroup;
+  }
 }
