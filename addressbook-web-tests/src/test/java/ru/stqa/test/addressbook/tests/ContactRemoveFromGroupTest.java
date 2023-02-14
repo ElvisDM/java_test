@@ -50,21 +50,24 @@ public class ContactRemoveFromGroupTest extends TestBase {
 
     app.goTo().Home();
 
-    Contacts contacts = app.db().contacts();
-    ContactData contactToGroup = contactWithGroup();
-    Contacts before = contacts.without(contactToGroup);
-    GroupData removedGroup = contactToGroup.getGroups().iterator().next();
+    Contacts contactsBefore = app.db().contacts();
+    ContactData contactWithGroup = contactWithGroup();
+    ContactData selectedContact = app.contact().contactInGroup(contactsBefore);
+    GroupData removedGroup = contactWithGroup.getGroups().iterator().next();
 
 
     app.contact().gotoGroupWhithContact(removedGroup.getId());
-    app.contact().selectContactsById(contactToGroup.getId());
+    app.contact().selectContactsById(contactWithGroup.getId());
     app.contact().removeContactFromGroup();
-    ContactData modifiedContact = contactToGroup.inGroup(removedGroup);
 
-    Contacts after = app.db().contacts();
+    Contacts contactAfter = app.db().contacts();
+    ContactData selectedContactAfter = app.db().contactById(selectedContact.getId());
+    Contacts after = contactAfter.without(selectedContactAfter);
 
-    assertThat(after.size(), equalTo(contacts.size()));
-    MatcherAssert.assertThat(after, equalTo(before.withAdded(modifiedContact)));
+    assertThat(contactAfter.size(), equalTo(contactsBefore.size()));
+    Contacts b1 = contactsBefore.withAdded(selectedContact);
+    Contacts a1 = after.withAdded(selectedContactAfter.inGroup(removedGroup));
+    MatcherAssert.assertThat(a1, equalTo(b1));
     verifyContactListInUI();
 
   }
