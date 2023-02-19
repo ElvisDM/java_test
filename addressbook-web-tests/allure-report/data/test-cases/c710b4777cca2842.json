@@ -1,0 +1,50 @@
+{
+  "uid" : "c710b4777cca2842",
+  "name" : "testContactInfo",
+  "fullName" : "Default Suite.testContactInfo",
+  "historyId" : "8339eb32c5cda33158bf3d96bc7a1026",
+  "time" : {
+    "start" : 1676812587347,
+    "stop" : 1676812592299,
+    "duration" : 4952
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testClass",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testMethod",
+    "value" : "testContactInfo"
+  }, {
+    "name" : "package",
+    "value" : "Default Suite"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "c710b4777cca2842.json",
+  "parameterValues" : [ ]
+}

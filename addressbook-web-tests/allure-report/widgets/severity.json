@@ -1,0 +1,131 @@
+[ {
+  "uid" : "8b22e58964c2dd06",
+  "name" : "testContactRemoveFromGroup",
+  "time" : {
+    "start" : 1676812596585,
+    "stop" : 1676812601489,
+    "duration" : 4904
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cf15b69ada3f9cb7",
+  "name" : "testHbConnection",
+  "time" : {
+    "start" : 1676812574408,
+    "stop" : 1676812574489,
+    "duration" : 81
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "95ea49d02d707e0d",
+  "name" : "testContactsCreation[ContactData{id=2147483647, firstname='Alex 0', lastname='Maximov 0', address='Moscow 0', homephone='+7(495)600-26-08', mobilephone='null', workphone='null', email='0_a.maximov@gmail.com', groups=[]}]",
+  "time" : {
+    "start" : 1676812601506,
+    "stop" : 1676812609243,
+    "duration" : 7737
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5da6f012599168ab",
+  "name" : "testContactsCreation[ContactData{id=2147483647, firstname='Alex 1', lastname='Maximov 1', address='Moscow 1', homephone='+7(495)601-26-08', mobilephone='null', workphone='null', email='1_a.maximov@gmail.com', groups=[]}]",
+  "time" : {
+    "start" : 1676812609250,
+    "stop" : 1676812617029,
+    "duration" : 7779
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ea7a58370eaa2552",
+  "name" : "testContactsDeletion",
+  "time" : {
+    "start" : 1676812617049,
+    "stop" : 1676812622067,
+    "duration" : 5018
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e23c93bfd39f554e",
+  "name" : "testContactsModification",
+  "time" : {
+    "start" : 1676812622084,
+    "stop" : 1676812631708,
+    "duration" : 9624
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "a2ff821407be7a52",
+  "name" : "testContactAddToGroup",
+  "time" : {
+    "start" : 1676812574521,
+    "stop" : 1676812579302,
+    "duration" : 4781
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "dd856f7e70e16ac1",
+  "name" : "testGroupCreation[GroupData{id='2147483647', name='test 0'}]",
+  "time" : {
+    "start" : 1676828817108,
+    "stop" : 1676828819264,
+    "duration" : 2156
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "830caf9197f5dd45",
+  "name" : "testGroupCreation[GroupData{id='2147483647', name='test 1'}]",
+  "time" : {
+    "start" : 1676828819334,
+    "stop" : 1676828821002,
+    "duration" : 1668
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4938223232034581",
+  "name" : "testGroupModification",
+  "time" : {
+    "start" : 1676812572199,
+    "stop" : 1676812574233,
+    "duration" : 2034
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3b6f1bfac3776c71",
+  "name" : "dbConnection",
+  "time" : {
+    "start" : 1676812574240,
+    "stop" : 1676812574258,
+    "duration" : 18
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8840bb50f4bbefba",
+  "name" : "testGroupDeletion",
+  "time" : {
+    "start" : 1676812571402,
+    "stop" : 1676812572186,
+    "duration" : 784
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c710b4777cca2842",
+  "name" : "testContactInfo",
+  "time" : {
+    "start" : 1676812587347,
+    "stop" : 1676812592299,
+    "duration" : 4952
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

@@ -1,0 +1,51 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: \nExpected: <[ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[GroupData{id='339', name='test4'}, GroupData{id='337', name='test4'}]}]>\n     but: was <[ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[GroupData{id='337', name='test4'}]}]>",
+      "children" : [ {
+        "name" : "testContactAddToGroup",
+        "uid" : "a2ff821407be7a52",
+        "parentUid" : "1e4086e0ef5d55fddea60be2f5c948f2",
+        "status" : "failed",
+        "time" : {
+          "start" : 1676812574521,
+          "stop" : 1676812579302,
+          "duration" : 4781
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "1e4086e0ef5d55fddea60be2f5c948f2"
+    }, {
+      "name" : "AssertionError: \nExpected: <[ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[]}, ContactData{id=471, firstname='Pavel', lastname='Ivanov', address='China', homephone='+7(901)987-12-24', mobilephone='+7(906)258-189-44', workphone='+7(495)153-54-19', email='ivanov99@yandex.ru', groups=[]}]>\n     but: was <[ContactData{id=471, firstname='Pavel', lastname='Ivanov', address='China', homephone='+7(901)987-12-24', mobilephone='+7(906)258-189-44', workphone='+7(495)153-54-19', email='ivanov99@yandex.ru', groups=[GroupData{id='340', name='test1'}]}, ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[]}]>",
+      "children" : [ {
+        "name" : "testContactsModification",
+        "uid" : "e23c93bfd39f554e",
+        "parentUid" : "2f159af8bb7eecdf133ee3ae33e77192",
+        "status" : "failed",
+        "time" : {
+          "start" : 1676812622084,
+          "stop" : 1676812631708,
+          "duration" : 9624
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "newPassed" : false,
+        "newBroken" : false,
+        "retriesCount" : 0,
+        "retriesStatusChange" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "2f159af8bb7eecdf133ee3ae33e77192"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

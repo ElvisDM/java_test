@@ -1,0 +1,251 @@
+{
+  "b4b4809a6cdfdf3cb9e72a0d78920f61" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "e23c93bfd39f554e",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: \nExpected: <[ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[]}, ContactData{id=471, firstname='Pavel', lastname='Ivanov', address='China', homephone='+7(901)987-12-24', mobilephone='+7(906)258-189-44', workphone='+7(495)153-54-19', email='ivanov99@yandex.ru', groups=[]}]>\n     but: was <[ContactData{id=471, firstname='Pavel', lastname='Ivanov', address='China', homephone='+7(901)987-12-24', mobilephone='+7(906)258-189-44', workphone='+7(495)153-54-19', email='ivanov99@yandex.ru', groups=[GroupData{id='340', name='test1'}]}, ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[]}]>",
+      "time" : {
+        "start" : 1676812622084,
+        "stop" : 1676812631708,
+        "duration" : 9624
+      }
+    } ]
+  },
+  "877dbea009e9cd758b9d780586ffc405" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ea7a58370eaa2552",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812617049,
+        "stop" : 1676812622067,
+        "duration" : 5018
+      }
+    } ]
+  },
+  "6e11755a9d9e66c8dc8e3240a57b0c38" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "5da6f012599168ab",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812609250,
+        "stop" : 1676812617029,
+        "duration" : 7779
+      }
+    } ]
+  },
+  "9a42eec2cc52ed19b9392d9104d39d5e" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8b22e58964c2dd06",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812596585,
+        "stop" : 1676812601489,
+        "duration" : 4904
+      }
+    } ]
+  },
+  "58464d6380f58c80dcad2049971cc7f1" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "8840bb50f4bbefba",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812571402,
+        "stop" : 1676812572186,
+        "duration" : 784
+      }
+    } ]
+  },
+  "c2d9ef2be0587a83df7c2cbe84754402" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "dd856f7e70e16ac1",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676828817108,
+        "stop" : 1676828819264,
+        "duration" : 2156
+      }
+    } ]
+  },
+  "490911ac2520152822bc6afdc615aa31" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "95ea49d02d707e0d",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812601506,
+        "stop" : 1676812609243,
+        "duration" : 7737
+      }
+    } ]
+  },
+  "dcd34e5af5e0712dc73611c430f548d4" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "3b6f1bfac3776c71",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812574240,
+        "stop" : 1676812574258,
+        "duration" : 18
+      }
+    } ]
+  },
+  "66eae7b04ffc589b7ed924559bfde789" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "a2ff821407be7a52",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: \nExpected: <[ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[GroupData{id='339', name='test4'}, GroupData{id='337', name='test4'}]}]>\n     but: was <[ContactData{id=468, firstname='Andrey', lastname='Orlov', address='Volgograd', homephone='+7(906)258-14-39', mobilephone='+7 (970) 354-91-12', workphone='+7 (993) 479-82-86', email='orlov_80@list.ru', groups=[GroupData{id='337', name='test4'}]}]>",
+      "time" : {
+        "start" : 1676812574521,
+        "stop" : 1676812579302,
+        "duration" : 4781
+      }
+    } ]
+  },
+  "c6a322097106f347313c16b31f57fba6" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "cf15b69ada3f9cb7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812574408,
+        "stop" : 1676812574489,
+        "duration" : 81
+      }
+    } ]
+  },
+  "bf018307ae51a961136b5c6832085b8c" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "830caf9197f5dd45",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676828819334,
+        "stop" : 1676828821002,
+        "duration" : 1668
+      }
+    } ]
+  },
+  "8339eb32c5cda33158bf3d96bc7a1026" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c710b4777cca2842",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812587347,
+        "stop" : 1676812592299,
+        "duration" : 4952
+      }
+    } ]
+  },
+  "4a17e002e55cc4ee4207b9225432238b" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "4938223232034581",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812572199,
+        "stop" : 1676812574233,
+        "duration" : 2034
+      }
+    } ]
+  }
+}

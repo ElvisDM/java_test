@@ -1,0 +1,58 @@
+{
+  "uid" : "dd856f7e70e16ac1",
+  "name" : "testGroupCreation[GroupData{id='2147483647', name='test 0'}]",
+  "fullName" : "Default Suite.testGroupCreation[GroupData{id='2147483647', name='test 0'}]",
+  "historyId" : "c2d9ef2be0587a83df7c2cbe84754402",
+  "time" : {
+    "start" : 1676828817108,
+    "stop" : 1676828819264,
+    "duration" : 2156
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 1,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testClass",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testMethod",
+    "value" : "testGroupCreation[GroupData{id='2147483647', name='test 0'}]"
+  }, {
+    "name" : "package",
+    "value" : "Default Suite"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "d7722f10838d248a",
+      "status" : "passed",
+      "time" : {
+        "start" : 1676812567325,
+        "stop" : 1676812569558,
+        "duration" : 2233
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "dd856f7e70e16ac1.json",
+  "parameterValues" : [ ]
+}

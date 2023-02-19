@@ -1,0 +1,50 @@
+{
+  "uid" : "8840bb50f4bbefba",
+  "name" : "testGroupDeletion",
+  "fullName" : "Default Suite.testGroupDeletion",
+  "historyId" : "58464d6380f58c80dcad2049971cc7f1",
+  "time" : {
+    "start" : 1676812571402,
+    "stop" : 1676812572186,
+    "duration" : 784
+  },
+  "description" : "",
+  "descriptionHtml" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "newBroken" : false,
+  "newPassed" : false,
+  "retriesCount" : 0,
+  "retriesStatusChange" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "suite",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testClass",
+    "value" : "Default Suite"
+  }, {
+    "name" : "testMethod",
+    "value" : "testGroupDeletion"
+  }, {
+    "name" : "package",
+    "value" : "Default Suite"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure1"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "8840bb50f4bbefba.json",
+  "parameterValues" : [ ]
+}
