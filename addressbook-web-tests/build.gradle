@@ -1,11 +1,20 @@
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "io.qameta.allure.gradle.allure:allure-plugin:2.11.2"
+    }
+}
+
+apply plugin: "io.qameta.allure"
 apply plugin: 'java'
 
 
 repositories {
     mavenCentral()
-}
-configurations {
-    agent
 }
 
 dependencies {
@@ -19,8 +28,10 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.30'
     implementation 'org.hibernate:hibernate-core:5.6.14.Final'
     implementation 'ch.qos.logback:logback-classic:1.4.4'
-    agent "org.aspectj:aspectjweaver:1.8.0"
-    implementation "ru.yandex.qatools.allure:allure-testng-adaptor:1.4.0.RC4"
+    implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.4'
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.19'
+    implementation group: 'io.qameta.allure', name: 'allure-java-commons', version: '2.20.1'
+
 }
 
 task testGroups(type: Test) {
@@ -37,11 +48,6 @@ task testGroups(type: Test) {
         systemProperty 'verifyUI', "${verifyUI}"
     }
 }
-
-testGroups.doFirst {
-    jvmArgs "-javaagent:${configurations.agent.singleFile}"
-}
-
 
 task testContacts(type: Test) {
     useTestNG{
